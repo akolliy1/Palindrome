@@ -1,0 +1,95 @@
+html,body,div,input,p,h1,h2,h3,h4,h5,h6,button {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+input,#insert button {
+    margin: 5px auto
+}
+input {
+    line-height: 25px;
+    width: 50%;
+}
+#insert button {
+    width: 50%;
+    background: blue;
+    height: 30px;
+    color: aliceblue;
+    box-shadow: 1px 2px 5px rgb(69, 69, 77);
+    border: 1px solid blue;
+    border-radius: 4px
+}
+.display button:hover,#insert button:hover {
+    background: rgb(35, 35, 235);
+    border: 1px solid rgb(35, 35, 248);
+    cursor: pointer;
+}
+.container {
+    background: rgb(253, 251, 251);
+    display: grid;
+    padding-top: 10px;
+    grid-template-areas: 'insert insert insert'
+                        'view view view';
+    grid-gap: 10px
+}
+#insert,#view {
+    width: 70%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 1px 1px 5px gray;
+    margin: auto
+}
+#insert {
+    grid-area: insert;
+    display: flex;
+    flex-direction: column
+}
+#view {
+    grid-area: view;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-areas: 'output output output'
+                        'entry entry entry';
+}
+#output {
+    grid-area: output;
+    padding: 20px 0;
+    text-align: center;
+}
+#entry {
+    grid-area: entry;
+    padding-bottom: 10px;
+    padding: 20px 0;
+}
+#entry li {
+    text-align: left
+}
+#output,#entry {
+    width: 100%;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 5px gray;
+}
+h3,h4 {
+    padding: 10px;
+    box-sizing: content-box;
+}
+h4 {
+    word-wrap: break-word;
+}
+p {
+    padding-bottom: 10px;
+}
+.display {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media(max-width: 300px) {
+    #insert,#view {
+    width: 100%;
+}
+}
