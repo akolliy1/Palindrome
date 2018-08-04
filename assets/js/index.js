@@ -49,6 +49,25 @@ function moulder(word, appendParent) {
 	return appendParent;
 }
 
+/**
+ * @description append existing li content when it's up-to 5(li).
+ * @function Existingmould
+ * @param {*} array
+ * @requires {li} - all li document
+ * @returns {void} htmlContent
+ */
+function Existing_mould(array) {
+	let num = array.length - 1;
+
+	if (num > array.length - 6) {
+		const liChild = document.getElementsByTagName('li');
+
+		for (let i = 0; i < liChild.length; i++) {
+			liChild[i].innerHTML = array[num];
+			num -= 1;
+		}
+	}
+}
 
 
 /**
@@ -58,12 +77,16 @@ function moulder(word, appendParent) {
  * @borrows palindrome
  * @borrows moulder
  */
-function renderToClient(word) {
+function renderToClient(word, array) {
 	const wrong = 'Oh no!, that is not a palindrome';
 	const right = 'Great!, It is a palindrome';
 
-	const mould = moulder(word, ulConatiner);
-	entry.appendChild(mould);
+	if (array.length <= 5) {
+		const mould = moulder(word, ulConatiner);
+		entry.appendChild(mould);
+	} else {
+		Existing_mould(array)
+	}
 
 	const ispalindrome = palindrome(word);
 
@@ -76,6 +99,7 @@ function renderToClient(word) {
 	}
 }
 
+const allwordArray = [];
 
 input.addEventListener('keydown', function (event) {
 	if (event.keyCode === 13) {
@@ -84,14 +108,17 @@ input.addEventListener('keydown', function (event) {
 			return
 		}
 
-		renderToClient(word)
+		allwordArray.push(word);
+		renderToClient(word, allwordArray);
 	}
 })
+
 insertBtn.addEventListener('click', function (event) {
 	const word = input.value;
 	if (word == '') {
 		return
 	}
 
-	renderToClient(word)
+	allwordArray.push(word);
+	renderToClient(word, allwordArray);
 })
